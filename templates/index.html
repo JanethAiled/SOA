@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <title>
+          Catalogo de Tiendas
+      </title>
+      <style type="text/css">
+        body {
+          margin: 2rempx 0px;
+        }
+        label{
+            color:dimgrey;
+            font-size: 22px;
+        }  
+      </style>
+  </head>
+  <body>
+      <center>
+      <form action="{{ url_for('home')}}" method="get"></form>
+       <form action="{{ url_for('datoChi')}}" method="get"></form>
+        <form action="{{ url_for('datoSono')}}" method="get"></form>
+          <form action="{{ url_for('datoTabas')}}" method="get"></form>
+            <form action="{{ url_for('datoNuevo')}}" method="get"></form>
+        <div class="section-header" style="background-image: url(https://production-masisa.s3.amazonaws.com/pim/5/0/9/e/509ed38a530f40764ad5164399ad082117c39bb5_59209_1_ecommerce.jpg); color: white">
+          <br><br>
+            <div class="section-header-inner">
+                <h1 class="section-header-title">Catalogo de Tiendas - Cashierless Store</h1>
+                <p class="section-header-text">Encuentra tu tienda favorita cerca de ti.</p>
+            </div>
+        </div>
+          <br><br>
+          <div class="dropdown">
+            <label>Estado:</label>
+            <button class="btn  btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" 
+                      aria-haspopup="true" aria-expanded="false" >
+              Seleccionar
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+               <li><a class="dropdown-item" href="/" data-value="Todos">Todos</a></li>
+               <li><a class="dropdown-item" href="/Chihuahua" data-value="Chihuahua">Chihuahua</a></li>
+               <li><a class="dropdown-item" href="/Sonora" data-value="Sonora">Sonora</a></li>
+               <li><a class="dropdown-item" href="/Tabasco" data-value="Tabasco">Tabasco</a></li>
+               <li><a class="dropdown-item" href="/NuevoLeon" data-value="Nuevo Leon">Nuevo Leon</a></li>
+            </ul>
+          </div>
+          <br><br>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre de la Tienda</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Telefono</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for tienda in tiendas %}
+                <tr>
+                    <td>{{ tienda.0 }}</td>
+                    <td>{{ tienda.1 }}</td>
+                    <td>{{ tienda.2 }}</td>
+                    <td>{{ tienda.3 }}</td>
+                    <td>{{ tienda.4 }}</td>
+                    <td>{{ tienda.5 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+      </form>
+    </center>
+  </body>
+
+</html>
